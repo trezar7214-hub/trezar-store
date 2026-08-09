@@ -1,0 +1,6 @@
+node_modules
+.env
+src/db/trezar.sqlite
+src/db/trezar.sqlite-*
+uploads/*
+!uploads/.gitkeep
