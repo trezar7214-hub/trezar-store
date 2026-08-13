@@ -91,10 +91,27 @@ export default function Shop() {
           ))}
         </div>
       ) : products.length === 0 ? (
-        <div className="text-center py-24">
-          <p className="font-display text-2xl text-plum-soft">No pieces found.</p>
-          <p className="text-sm text-plum-soft/70 mt-2">Try a different search or browse all categories.</p>
-        </div>
+        category === "bridal-sets" ? (
+          /* BRIDAL COLLECTION COMING SOON CARD */
+          <div className="text-center py-20 px-6 border border-plum/10 rounded-2xl bg-cream/50 max-w-2xl mx-auto my-8">
+            <span className="text-3xl mb-3 block">✨</span>
+            <p className="font-label text-xs uppercase tracking-widest2 text-rosegold-deep mb-2">
+              Royal Elegance
+            </p>
+            <h2 className="font-display text-4xl text-plum mb-4">
+              Bridal Collection Coming Soon
+            </h2>
+            <p className="text-sm font-label text-plum-soft/80 leading-relaxed max-w-md mx-auto">
+              We are carefully crafting exquisite handcrafted bridal sets for your special day. Stay tuned for royal designs coming very soon!
+            </p>
+          </div>
+        ) : (
+          /* NORMAL NO PIECES FOUND */
+          <div className="text-center py-24">
+            <p className="font-display text-2xl text-plum-soft">No pieces found.</p>
+            <p className="text-sm text-plum-soft/70 mt-2">Try a different search or browse all categories.</p>
+          </div>
+        )
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
           {products.map((p) => (
