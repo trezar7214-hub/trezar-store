@@ -31,7 +31,8 @@ const products = [
     material: "Alloy, Kundan, Pearl beads",
     stock: 24,
     featured: 1,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
+    // ImgBB se copy hua exact direct link:
+    image: "https://i.ibb.co/FqH6CW4n/Diamond-Jewellery-in-Pakistan-with-Prices.jpg",
   },
   {
     name: "Anaya Layered Necklace Set",
@@ -154,6 +155,7 @@ const products = [
   },
 ];
 
+// Pehle database ki purani entries update karne ke liye REPLACE query:
 const insertProduct = db.prepare(`
   INSERT OR REPLACE INTO products
     (name, slug, description, price, compare_at_price, category_id, image, images, stock, featured, color, material)
