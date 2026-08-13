@@ -31,6 +31,7 @@ const products = [
     material: "Alloy, Kundan, Pearl beads",
     stock: 24,
     featured: 1,
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
   },
   {
     name: "Anaya Layered Necklace Set",
@@ -44,19 +45,7 @@ const products = [
     material: "Alloy, Zircon, Enamel",
     stock: 15,
     featured: 1,
-  },
-  {
-    name: "Mahira Kundan Choker Set",
-    slug: "mahira-kundan-choker-set",
-    description:
-      "A statement kundan choker with matching jhumka earrings and maang tikka, designed for walima and reception looks.",
-    price: 6800,
-    compare_at_price: 8500,
-    category_id: catId("bridal-sets"),
-    color: "Antique Gold",
-    material: "Kundan, Polki-finish stones",
-    stock: 8,
-    featured: 1,
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
   },
   {
     name: "Rose Vine Adjustable Ring",
@@ -69,6 +58,7 @@ const products = [
     material: "Alloy, Cubic Zirconia",
     stock: 40,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
   },
   {
     name: "Noorani Pearl Drop Earrings",
@@ -81,6 +71,7 @@ const products = [
     material: "Alloy, Faux Pearl",
     stock: 30,
     featured: 1,
+    image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=800&q=80",
   },
   {
     name: "Sitara Chooriyan Bangle Set (Set of 6)",
@@ -94,6 +85,7 @@ const products = [
     material: "Alloy, Glass Stones",
     stock: 18,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1611591475165-da25d0c72c91?w=800&q=80",
   },
   {
     name: "Laila Maang Tikka",
@@ -106,6 +98,7 @@ const products = [
     material: "Alloy, Pearl",
     stock: 20,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=800&q=80",
   },
   {
     name: "Farah Floral Stud Set",
@@ -118,19 +111,7 @@ const products = [
     material: "Alloy",
     stock: 50,
     featured: 0,
-  },
-  {
-    name: "Hania Bridal Necklace Set",
-    slug: "hania-bridal-necklace-set",
-    description:
-      "A full bridal set with a layered necklace, jhumka earrings, maang tikka and a double-hand bracelet — designed for baraat day.",
-    price: 9800,
-    compare_at_price: 12500,
-    category_id: catId("bridal-sets"),
-    color: "Antique Rose Gold",
-    material: "Kundan, Polki-finish, Pearl",
-    stock: 6,
-    featured: 1,
+    image: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=800&q=80",
   },
   {
     name: "Simple Dulhan Bracelet",
@@ -143,6 +124,7 @@ const products = [
     material: "Alloy, Pearl",
     stock: 22,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80",
   },
   {
     name: "Zoya Solitaire Ring",
@@ -155,6 +137,7 @@ const products = [
     material: "Alloy, Cubic Zirconia",
     stock: 35,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80",
   },
   {
     name: "Iqra Pearl Choker",
@@ -167,11 +150,12 @@ const products = [
     material: "Faux Pearl, Alloy",
     stock: 14,
     featured: 0,
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80",
   },
 ];
 
 const insertProduct = db.prepare(`
-  INSERT OR IGNORE INTO products
+  INSERT OR REPLACE INTO products
     (name, slug, description, price, compare_at_price, category_id, image, images, stock, featured, color, material)
   VALUES (@name, @slug, @description, @price, @compare_at_price, @category_id, @image, @images, @stock, @featured, @color, @material)
 `);
@@ -180,7 +164,7 @@ products.forEach((p) => {
   insertProduct.run({
     ...p,
     compare_at_price: p.compare_at_price ?? null,
-    image: null,
+    image: p.image || "https://placehold.co/600x600/png?text=Trezar+Jewelry",
     images: JSON.stringify([]),
   });
 });
